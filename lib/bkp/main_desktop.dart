@@ -2,10 +2,10 @@ import 'package:flutter/foundation.dart'
     show debugDefaultTargetPlatformOverride;
 import 'package:flutter/material.dart';
 
-import './main.dart';
+import './first.dart';
 
-void main() 
-{
+void main() {
   debugDefaultTargetPlatformOverride = TargetPlatform.fuchsia;
-  runApp(Main());
+  // runApp(HomePage());
+  runApp(First());
 }
