@@ -1,8 +1,8 @@
 class Contato 
 {
-  Contato(this.nome, this.telefone);
-
   String nome;
   String telefone;
-  // String outro;
+  String data_nasc;
+
+  Contato(this.nome, this.telefone, this.data_nasc);
 }

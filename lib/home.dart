@@ -9,26 +9,26 @@ class Home extends StatelessWidget
 {
 
   List<Contato> contatos = <Contato>[
-    Contato('Ewerton','(91) 91234-5678'), 
-    Contato('Fulano','(91) 91234-5678'), 
-    Contato('Humberto','(91) 91234-5678'), 
-    Contato('Doisberto','(91) 91234-5678'), 
-    Contato('Trêsberto','(91) 91234-5678'),    
-    Contato('Fulano','(91) 91234-5678'), 
-    Contato('Fulano','(91) 91234-5678'), 
-    Contato('Fulano','(91) 91234-5678'), 
-    Contato('Fulano','(91) 91234-5678'), 
-    Contato('Fulano','(91) 91234-5678'), 
-    Contato('Fulano','(91) 91234-5678'), 
-    Contato('Fulano','(91) 91234-5678'), 
-    Contato('Fulano','(91) 91234-5678'), 
-    Contato('Fulano','(91) 91234-5678'), 
-    Contato('Fulano','(91) 91234-5678'), 
-    Contato('Fulano','(91) 91234-5678'), 
-    Contato('Fulano','(91) 91234-5678'), 
-    Contato('Humberto','(91) 91234-5678'), 
-    Contato('Doisberto','(91) 91234-5678'), 
-    Contato('Trêsberto','(91) 91234-5678'),
+    Contato('Ewerton','(91) 91234-5678','12/12/1998'), 
+    Contato('Fulano','(91) 91234-5678','12/12/1998'), 
+    Contato('Humberto','(91) 91234-5678','12/12/1998'), 
+    Contato('Doisberto','(91) 91234-5678','12/12/1998'), 
+    Contato('Trêsberto','(91) 91234-5678','12/12/1998'),    
+    Contato('Fulano','(91) 91234-5678','12/12/1998'), 
+    Contato('Fulano','(91) 91234-5678','12/12/1998'), 
+    Contato('Fulano','(91) 91234-5678','12/12/1998'), 
+    Contato('Fulano','(91) 91234-5678','12/12/1998'), 
+    Contato('Fulano','(91) 91234-5678','12/12/1998'), 
+    Contato('Fulano','(91) 91234-5678','12/12/1998'), 
+    Contato('Fulano','(91) 91234-5678','12/12/1998'), 
+    Contato('Fulano','(91) 91234-5678','12/12/1998'), 
+    Contato('Fulano','(91) 91234-5678','12/12/1998'), 
+    Contato('Fulano','(91) 91234-5678','12/12/1998'), 
+    Contato('Fulano','(91) 91234-5678','12/12/1998'), 
+    Contato('Fulano','(91) 91234-5678','12/12/1998'), 
+    Contato('Humberto','(91) 91234-5678','12/12/1998'), 
+    Contato('Doisberto','(91) 91234-5678','12/12/1998'), 
+    Contato('Trêsberto','(91) 91234-5678','12/12/1998'),
   ];
 
   @override
@@ -77,7 +77,7 @@ Widget buildListContatos(BuildContext context, Contato contato)
       onTap: () 
       {
         print(contato.nome);
-        Navigator.push(context, MaterialPageRoute(builder: (context) => Detalhes()));
+        Navigator.push(context, MaterialPageRoute(builder: (context) => Detalhes(contato.nome, contato.telefone, contato.data_nasc)));
       }
     ),//ListTile
   );// MergeSemantics
