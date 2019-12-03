@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:dynamic_theme/dynamic_theme.dart';
 import './home.dart';
+import './lista.dart';
 
 class Main extends StatelessWidget 
 {
@@ -19,7 +20,8 @@ class Main extends StatelessWidget
           debugShowCheckedModeBanner: false,
           title: 'Lista Telefônica',
           theme: theme,
-          home: new Home(),
+          // home: new Home(),
+          home: new Lista(),
         );
       }
     );
