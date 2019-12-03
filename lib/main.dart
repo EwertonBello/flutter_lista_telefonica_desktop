@@ -16,6 +16,7 @@ class Main extends StatelessWidget
       themedWidgetBuilder: (context, theme) 
       {
         return new MaterialApp(
+          debugShowCheckedModeBanner: false,
           title: 'Lista Telefônica',
           theme: theme,
           home: new Home(),

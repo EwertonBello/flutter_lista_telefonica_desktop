@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import './contato.dart';
+import './models/contato.dart';
 
-class Detalhes extends StatelessWidget 
+class Detalhes extends StatelessWidget
 {
 
   String nome;
@@ -11,7 +11,7 @@ class Detalhes extends StatelessWidget
   Detalhes(this.nome,this.telefone,this.data_nasc);
 
   @override
-  Widget build(BuildContext context) 
+  Widget build(BuildContext context)
   {
     return new Scaffold(
         appBar: new AppBar(
