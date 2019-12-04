@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'models/contato.dart';
 import 'detalhes.dart';
@@ -24,12 +26,40 @@ class Lista extends StatefulWidget
 class _ListaState extends State<Lista>
 {
 
+	// @override
+	// void initState() 
+	// {
+	// 	super.initState();
+	// 	print('initState');
+ //      	new File('./teste.txt').readAsString().then((String contents) {
+ //        	print(contents.split(';'));
+	// 		setState(()
+	// 		{
+	// 			print('initState setState');
+	// 			widget.contatos.add(Contato(nome:'Doisberto',telefone:'(91) 91234-5675',data_nasc:'12-12-1998'));
+	// 		});
+	// 	});
+	// }
+
 	void add()
 	{
 		setState(()
 		{
 			widget.contatos.add(Contato(nome:'Doisberto',telefone:'(91) 91234-5675',data_nasc:'12-12-1998'));
 		});
+	}
+
+	void _openCadastro() async
+	{
+		final contato = await Navigator.push(context, MaterialPageRoute(builder: (context) => Cadastro()));
+		print('O que veio: $contato');
+		if (contato != null)
+		{
+			setState(()
+			{
+				widget.contatos.add(contato);
+			});
+		}
 	}
 
 	@override
@@ -61,7 +91,8 @@ class _ListaState extends State<Lista>
 			floatingActionButton: FloatingActionButton(
 				// textColor: Colors.white,
 				// onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => Cadastro())),
-				onPressed: add,
+				// onPressed: add,
+				onPressed: _openCadastro,
 				child: Icon(Icons.add),
 				),
 		);
