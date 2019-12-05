@@ -12,9 +12,9 @@ class ModTxt
 		print('TXT aí: $txt');
 	}
 
-	void readTXT()
+	String readTXT()
 	{
-		String txt = '';
+		var txt = [];
 
 		// new File('./teste.txt')
 		// 	.readAsString()
@@ -24,17 +24,32 @@ class ModTxt
 		// 	});
 
 		// print(txt);
+
+		// final file = new File('teste.txt');
+		// Stream<List<int>> inputStream = file.openRead();
+
+		// inputStream
+		// .transform(utf8.decoder)       // Decode bytes to UTF-8.
+		// .transform(new LineSplitter()) // Convert stream to individual lines.
+		// .listen((String line) {        // Process results.
+		// 	print('$line: ${line.length} bytes');
+		// 	},
+		// 	onDone: () { print('File is now closed.'); },
+		// 	onError: (e) { print(e.toString()); });		
+
 		final file = new File('teste.txt');
 		Stream<List<int>> inputStream = file.openRead();
 
 		inputStream
 		.transform(utf8.decoder)       // Decode bytes to UTF-8.
 		.transform(new LineSplitter()) // Convert stream to individual lines.
-		.listen((String line) {        // Process results.
-			print('$line: ${line.length} bytes');
-			},
-			onDone: () { print('File is now closed.'); },
-			onError: (e) { print(e.toString()); });
+		.forEach((item) => txt.add(item));
+        print(txt);
+		return txt.join();
 
 	}
+
+	// Future<String> loadTxt(BuildContext context) async {
+	// 	return await DefaultAssetBundle.of(context).loadString('teste.txt');
+	// }
 }
