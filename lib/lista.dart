@@ -1,9 +1,8 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'models/contato.dart';
 import 'detalhes.dart';
 import 'cadastro.dart';
+import 'modtxt.dart';
 
 class Lista extends StatefulWidget
 {
@@ -40,14 +39,6 @@ class _ListaState extends State<Lista>
 	// 		});
 	// 	});
 	// }
-
-	void add()
-	{
-		setState(()
-		{
-			widget.contatos.add(Contato(nome:'Doisberto',telefone:'(91) 91234-5675',data_nasc:'12-12-1998'));
-		});
-	}
 
 	void _openCadastro() async
 	{
@@ -90,9 +81,12 @@ class _ListaState extends State<Lista>
 			),
 			floatingActionButton: FloatingActionButton(
 				// textColor: Colors.white,
-				// onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => Cadastro())),
-				// onPressed: add,
-				onPressed: _openCadastro,
+				// onPressed: _openCadastro,
+				onPressed: () {
+					print('#############foi');
+					ModTxt txt = new ModTxt();
+					print(txt.readTXT());
+					},
 				child: Icon(Icons.add),
 				),
 		);

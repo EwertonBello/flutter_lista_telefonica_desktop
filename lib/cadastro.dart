@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_masked_text/flutter_masked_text.dart';
 import 'models/contato.dart';
@@ -18,7 +16,6 @@ class _CadastroState extends State<Cadastro>
   var _controllerData = new MaskedTextController(mask: '00/00/0000');
 
   String _nome, _telefone, _data_nasc;
-  // result = Contato(nome: _nome, telefone: _telefone, data_nasc: _data_nasc);
 
   void cadastrar()
   {
@@ -28,10 +25,6 @@ class _CadastroState extends State<Cadastro>
       print(_nome);
       print(_telefone);
       print(_data_nasc);
-      // new File('./teste.txt').writeAsString('$_nome,$_telefone,$_data_nasc;');
-      // new File('./teste.txt').readAsString().then((String contents) {
-      //   print(contents.split(';'));
-      //   });
       Navigator.of(context).pop(Contato(nome:_nome,telefone:_telefone,data_nasc:_data_nasc));
     }
   }
