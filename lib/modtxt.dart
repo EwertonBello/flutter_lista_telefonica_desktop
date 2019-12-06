@@ -14,7 +14,7 @@ class ModTxt
 
 	String readTXT()
 	{
-		var txt = [];
+		String txt = '';
 
 		// new File('./teste.txt')
 		// 	.readAsString()
@@ -43,10 +43,17 @@ class ModTxt
 		inputStream
 		.transform(utf8.decoder)       // Decode bytes to UTF-8.
 		.transform(new LineSplitter()) // Convert stream to individual lines.
-		.forEach((item) => txt.add(item));
-        print(txt);
-		return txt.join();
+		.forEach((item) => teste(item));
+        
+        // print(txt);
+		
+		return 'txt.join()';
 
+	}
+
+	void teste(String teste)
+	{
+		print('pegou $teste');
 	}
 
 	// Future<String> loadTxt(BuildContext context) async {
