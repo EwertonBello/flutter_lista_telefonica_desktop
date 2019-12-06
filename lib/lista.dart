@@ -24,22 +24,6 @@ class Lista extends StatefulWidget
 
 class _ListaState extends State<Lista>
 {
-
-	// @override
-	// void initState() 
-	// {
-	// 	super.initState();
-	// 	print('initState');
- //      	new File('./teste.txt').readAsString().then((String contents) {
- //        	print(contents.split(';'));
-	// 		setState(()
-	// 		{
-	// 			print('initState setState');
-	// 			widget.contatos.add(Contato(nome:'Doisberto',telefone:'(91) 91234-5675',data_nasc:'12-12-1998'));
-	// 		});
-	// 	});
-	// }
-
 	void _openCadastro() async
 	{
 		final contato = await Navigator.push(context, MaterialPageRoute(builder: (context) => Cadastro()));
@@ -82,10 +66,10 @@ class _ListaState extends State<Lista>
 			floatingActionButton: FloatingActionButton(
 				// textColor: Colors.white,
 				// onPressed: _openCadastro,
-				onPressed: () {
+				onPressed: () async{
 					print('#############foi');
 					ModTxt txt = new ModTxt();
-					print(txt.readTXT());
+					print(await txt.registro);
 					},
 				child: Icon(Icons.add),
 				),
