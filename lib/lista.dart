@@ -35,12 +35,12 @@ class _ListaState extends State<Lista>
 	//   _getRegistros();
 	// }
 
-@override
-initState()
-{
-  super.initState();
-	_getRegistros();
-}
+	@override
+	initState()
+	{
+	  super.initState();
+		_getRegistros();
+	}
 
 	void _openCadastro() async
 	{
@@ -53,6 +53,17 @@ initState()
 				contatos.add(contato);
 			});
 		}
+	}
+
+	bool _validaData(String data)
+	{
+		var arrData = data.split('/');
+		print(arrData);
+		print(DateTime.parse('2013-12-11').day);
+		print(DateTime.parse('2013-12-11').month);
+		print(DateTime.parse('2013-12-11').year);
+
+		return true;
 	}
 
 	@override
