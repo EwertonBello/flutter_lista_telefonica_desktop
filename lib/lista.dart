@@ -55,17 +55,6 @@ class _ListaState extends State<Lista>
 		}
 	}
 
-	bool _validaData(String data)
-	{
-		var arrData = data.split('/');
-		print(arrData);
-		print(DateTime.parse('2013-12-11').day);
-		print(DateTime.parse('2013-12-11').month);
-		print(DateTime.parse('2013-12-11').year);
-
-		return true;
-	}
-
 	@override
 	Widget build(BuildContext context)
 	{
