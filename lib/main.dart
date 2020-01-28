@@ -20,8 +20,8 @@ class Main extends StatelessWidget
           debugShowCheckedModeBanner: false,
           title: 'Lista Telefônica',
           theme: theme,
-          // home: new Home(),
-          home: new Lista(),
+          home: new Home(),
+          // home: new Lista(),
         );
       }
     );

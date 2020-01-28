@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_masked_text/flutter_masked_text.dart';
 import 'models/contato.dart';
+import 'modtxt.dart';
 
 
 class Cadastro extends StatefulWidget
@@ -22,10 +23,14 @@ class _CadastroState extends State<Cadastro>
     if(formKey.currentState.validate())
     {
       formKey.currentState.save();
+      _nome = '${_nome[0].toUpperCase()}${_nome.substring(1)}';
       print(_nome);
       print(_telefone);
       print(_data_nasc);
       Navigator.of(context).pop(Contato(nome:_nome,telefone:_telefone,data_nasc:_data_nasc));
+
+      ModTxt txt = new ModTxt();
+      txt.writeRegistro('$_nome,$_telefone,$_data_nasc');
     }
   }
 

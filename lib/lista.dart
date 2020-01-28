@@ -6,24 +6,42 @@ import 'modtxt.dart';
 
 class Lista extends StatefulWidget
 {
-	List<Contato> contatos = new List<Contato>();
-
-	Lista()
-	{
-		print('Construindo...');
-		contatos = [];
-		contatos.add(Contato(nome:'Ewerton',telefone:'(91) 91234-5671',data_nasc:'12-12-1998'));
-		contatos.add(Contato(nome:'de Jesus',telefone:'(91) 91234-5672',data_nasc:'12-12-1998'));
-		contatos.add(Contato(nome:'Belo',telefone:'(91) 91234-5673',data_nasc:'12-12-1998'));
-		contatos.add(Contato(nome:'Ferreira',telefone:'(91) 91234-5674',data_nasc:'12-12-1998'));
-	}
-
 	@override
 	_ListaState createState() => _ListaState();
 }
 
 class _ListaState extends State<Lista>
 {
+	List<Contato> contatos = new List<Contato>();
+	ModTxt txt = new ModTxt();
+
+	_getRegistros() async
+	{
+		var registros = await txt.registro;
+		registros.sort();
+		contatos = [];
+		registros.forEach((r) {
+			var reg = r.split(',');
+			setState((){
+				contatos.add(Contato(nome:reg[0],telefone:reg[1],data_nasc:reg[2]));
+			});
+		});
+	}
+
+	// @override
+	// void didUpdateWidget(Widget oldWidget)
+	// {
+	// 	print('Daqui do didUpdateWidget');
+	//   _getRegistros();
+	// }
+
+@override
+initState()
+{
+  super.initState();
+	_getRegistros();
+}
+
 	void _openCadastro() async
 	{
 		final contato = await Navigator.push(context, MaterialPageRoute(builder: (context) => Cadastro()));
@@ -32,7 +50,7 @@ class _ListaState extends State<Lista>
 		{
 			setState(()
 			{
-				widget.contatos.add(contato);
+				contatos.add(contato);
 			});
 		}
 	}
@@ -40,14 +58,12 @@ class _ListaState extends State<Lista>
 	@override
 	Widget build(BuildContext context)
 	{
+		contatos.sort((a,b)=>a.nome.compareTo(b.nome));
 		return Scaffold(
-			appBar: AppBar(
-				title: Text('Lista'),
-			),
 			body: ListView.builder(
-				itemCount: widget.contatos.length,
+				itemCount: contatos.length,
 				itemBuilder: (context, index) {
-					final contato = widget.contatos[index];
+					final contato = contatos[index];
 					Widget secondary = Text(contato.telefone);
 					return new MergeSemantics(
 						child: new ListTile(
@@ -64,13 +80,7 @@ class _ListaState extends State<Lista>
 				},
 			),
 			floatingActionButton: FloatingActionButton(
-				// textColor: Colors.white,
-				// onPressed: _openCadastro,
-				onPressed: () async{
-					print('#############foi');
-					ModTxt txt = new ModTxt();
-					print(await txt.registro);
-					},
+				onPressed: _openCadastro,
 				child: Icon(Icons.add),
 				),
 		);
