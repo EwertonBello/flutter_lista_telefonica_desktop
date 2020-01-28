@@ -33,6 +33,18 @@ class _CadastroState extends State<Cadastro>
       txt.writeRegistro('$_nome,$_telefone,$_data_nasc');
     }
   }
+  
+  bool validaData(String data)
+  {
+    bool result = false;
+    var arrData = data.split('/');
+    var dataValid = DateTime.parse('${arrData[2]}-${arrData[1]}-${arrData[0]}');
+
+    if(int.parse(arrData[0]) == dataValid.day && int.parse(arrData[1]) == dataValid.month && int.parse(arrData[2]) == dataValid.year)
+      result = true;
+
+    return result;
+  }
 
   @override
   Widget build(BuildContext context)
@@ -70,7 +82,7 @@ class _CadastroState extends State<Cadastro>
                 decoration: InputDecoration(
                   labelText: 'Data de Nascimento:'
                   ),
-                validator: (input) => input.length != 10 ? 'Quantidade de dígitos insuficiente!' : null,
+                validator: (input) => input.length == 10 && validaData(input)? 'Data inválida!' : null,
                 onSaved: (input) => _data_nasc = input,
                 ),
 
