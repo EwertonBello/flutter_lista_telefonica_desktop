@@ -33,8 +33,18 @@ class ModTxt
     registros.sort();
     String text = registros.join('\n');
     // print(text);
+    print('Contains t ${!registros.contains(t)}');
+    if (!registros.contains(t))
+      File('./teste.txt').writeAsString(text);
+
+  }
+
+  void deleteRegistro(String t) async
+  {
+  	var registros = await registro;
+  	registros.remove(t);
+    String text = registros.join('\n');
   	File('./teste.txt').writeAsString(text);
-    // File('./teste.txt').writeAsString('\n'+t, mode: FileMode.APPEND);
   }
 
 }

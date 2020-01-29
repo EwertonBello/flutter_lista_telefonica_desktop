@@ -32,10 +32,8 @@ class _ListaState extends State<Lista>
 		dupContatos.addAll(contatos);
 	}
 
-	void filtroBusca(String query)
+	void _filtroBusca(String query)
 	{
-	  // List<Contato> modeloBuscaResults = List<Contato>();
-	  // modeloBuscaResults.addAll(dupContatos);
 	  if (query.isNotEmpty)
 		{
 	    List<Contato> contatosResults = List<Contato>();
@@ -58,13 +56,6 @@ class _ListaState extends State<Lista>
 	  }
 	}
 
-	// @override
-	// void didUpdateWidget(Widget oldWidget)
-	// {
-	// 	print('Daqui do didUpdateWidget');
-	//   _getRegistros();
-	// }
-
 	@override
 	initState()
 	{
@@ -73,7 +64,7 @@ class _ListaState extends State<Lista>
 	}
 
 	void _openCadastro() async
-	{
+	{ // Verifica se ele pode cadastrar mais de um
 		final contato = await Navigator.push(context, MaterialPageRoute(builder: (context) => Cadastro()));
 
 		if (contato != null)
@@ -84,6 +75,27 @@ class _ListaState extends State<Lista>
 				dupContatos.add(contato);
 			});
 		}
+	}
+	void _openDetalhes(Contato contato) async
+	{
+		final respCtt = await Navigator.push(context, MaterialPageRoute(builder: (context) => Detalhes(contato.nome, contato.telefone, contato.data_nasc)));
+
+		if (respCtt != null)
+		{
+			if (respCtt == 'excluir')
+				setState(() => contatos.remove(contato));
+			else
+			{
+				setState(()
+				{
+					print('Alterando o ${contato.nome} para ${respCtt.nome}');
+					contatos.remove(contato);
+					contatos.add(respCtt);
+				});
+			}
+
+		}
+		print(respCtt);
 	}
 
 	@override
@@ -98,7 +110,7 @@ class _ListaState extends State<Lista>
               padding: const EdgeInsets.all(8.0),
               child: TextField(
                 onChanged: (value) {
-									filtroBusca(value.toUpperCase());
+									_filtroBusca(value.toUpperCase());
                 },
                 controller: buscaController,
                 decoration: InputDecoration(
@@ -123,7 +135,8 @@ class _ListaState extends State<Lista>
 													trailing: Icon(Icons.keyboard_arrow_right),
 													onTap: ()
 													{
-														Navigator.push(context, MaterialPageRoute(builder: (context) => Detalhes(contato.nome, contato.telefone, contato.data_nasc)));
+														// Navigator.push(context, MaterialPageRoute(builder: (context) => Detalhes(contato.nome, contato.telefone, contato.data_nasc)));
+														_openDetalhes(contato);
 													}
 													),//ListTile
 												);// MergeSemantics

@@ -18,19 +18,16 @@ class _CadastroState extends State<Cadastro>
 
   String _nome, _telefone, _data_nasc;
 
-  void cadastrar()
+  void _cadastrar()
   {
     if(formKey.currentState.validate())
     {
       formKey.currentState.save();
       _nome = '${_nome[0].toUpperCase()}${_nome.substring(1)}';
-      // print(_nome);
-      // print(_telefone);
-      // print(_data_nasc);
-      Navigator.of(context).pop(Contato(nome:_nome,telefone:_telefone,data_nasc:_data_nasc));
-
       ModTxt txt = new ModTxt();
       txt.writeRegistro('$_nome,$_telefone,$_data_nasc');
+      Navigator.of(context).pop(Contato(nome:_nome,telefone:_telefone,data_nasc:_data_nasc));
+
     }
   }
 
@@ -93,7 +90,7 @@ class _CadastroState extends State<Cadastro>
                   child: RaisedButton(
                     color: Colors.green,
                     textColor: Colors.white,
-                    onPressed: cadastrar,
+                    onPressed: _cadastrar,
                     child: Text('Cadastrar'),
                     ),
                   )
