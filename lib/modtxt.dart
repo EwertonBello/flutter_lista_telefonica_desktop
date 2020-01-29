@@ -33,7 +33,6 @@ class ModTxt
     registros.sort();
     String text = registros.join('\n');
     // print(text);
-    print('Contains t ${!registros.contains(t)}');
     if (!registros.contains(t))
       File('./teste.txt').writeAsString(text);
 
