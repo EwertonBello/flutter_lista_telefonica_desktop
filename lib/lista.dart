@@ -71,10 +71,13 @@ class _ListaState extends State<Lista>
 		{
 			setState(()
 			{
+<<<<<<< HEAD
 				// print(contato);
 				// print(contatos);
 
 				print('cadastro contains ${contatos.contains(contato)}');
+=======
+>>>>>>> 42b3af0792734f21aeab1c18d11e35bba833a422
 				if (!contatos.contains(contato+';'))
 					contatos.add(contato);
 					dupContatos.add(contato);
@@ -93,7 +96,6 @@ class _ListaState extends State<Lista>
 			{
 				setState(()
 				{
-					print('Alterando o ${contato.nome} para ${respCtt.nome}');
 					contatos.remove(contato);
 					if (!contatos.contains(respCtt+';'))
 						contatos.add(respCtt);
