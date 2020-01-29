@@ -24,26 +24,25 @@ class _CadastroState extends State<Cadastro>
     {
       formKey.currentState.save();
       _nome = '${_nome[0].toUpperCase()}${_nome.substring(1)}';
-      print(_nome);
-      print(_telefone);
-      print(_data_nasc);
+      // print(_nome);
+      // print(_telefone);
+      // print(_data_nasc);
       Navigator.of(context).pop(Contato(nome:_nome,telefone:_telefone,data_nasc:_data_nasc));
 
       ModTxt txt = new ModTxt();
       txt.writeRegistro('$_nome,$_telefone,$_data_nasc');
     }
   }
-  
+
   bool validaData(String data)
   {
-    bool result = false;
     var arrData = data.split('/');
     var dataValid = DateTime.parse('${arrData[2]}-${arrData[1]}-${arrData[0]}');
-
+    if(dataValid.millisecondsSinceEpoch > DateTime.now().millisecondsSinceEpoch)
+      return false;
     if(int.parse(arrData[0]) == dataValid.day && int.parse(arrData[1]) == dataValid.month && int.parse(arrData[2]) == dataValid.year)
-      result = true;
-
-    return result;
+      return true;
+    return false;
   }
 
   @override
@@ -82,7 +81,7 @@ class _CadastroState extends State<Cadastro>
                 decoration: InputDecoration(
                   labelText: 'Data de Nascimento:'
                   ),
-                validator: (input) => input.length == 10 && validaData(input)? 'Data inválida!' : null,
+                validator: (input) => input.length == 10 && validaData(input)? null : 'Data inválida!',
                 onSaved: (input) => _data_nasc = input,
                 ),
 

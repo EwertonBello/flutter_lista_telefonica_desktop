@@ -2,7 +2,7 @@ import 'dart:io';
 import 'dart:convert';
 import 'dart:async';
 
-class ModTxt 
+class ModTxt
 {
 
   Future<List<String>> get registro async
@@ -18,11 +18,11 @@ class ModTxt
 
   	try {
   		await for (String line in lines) registros.add(line);
-  	} 
+  	}
   	catch (e) {
   		print(e.toString());
   	}
-  	
+
   	return registros;
   }
 
@@ -32,7 +32,7 @@ class ModTxt
   	registros.add(t);
     registros.sort();
     String text = registros.join('\n');
-    print(text);
+    // print(text);
   	File('./teste.txt').writeAsString(text);
     // File('./teste.txt').writeAsString('\n'+t, mode: FileMode.APPEND);
   }
@@ -74,7 +74,7 @@ class ModTxt
 // 		// 	print('$line: ${line.length} bytes');
 // 		// 	},
 // 		// 	onDone: () { print('File is now closed.'); },
-// 		// 	onError: (e) { print(e.toString()); });		
+// 		// 	onError: (e) { print(e.toString()); });
 
 // 		final file = new File('teste.txt');
 // 		Stream<List<int>> inputStream = file.openRead();
@@ -83,9 +83,9 @@ class ModTxt
 // 		.transform(utf8.decoder)       // Decode bytes to UTF-8.
 // 		.transform(new LineSplitter()) // Convert stream to individual lines.
 // 		.forEach((item) => teste(item));
-        
+
 //         // print(txt);
-		
+
 // 		return this.txt;
 
 // 	}
