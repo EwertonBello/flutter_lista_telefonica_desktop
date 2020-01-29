@@ -71,13 +71,7 @@ class _ListaState extends State<Lista>
 		{
 			setState(()
 			{
-				// print(contato);
-				// print(contatos);
-				flutter: Doisberto,(22) 2 2222-2222,11/11/1111;
-// flutter: [Aldnoah Zero,(37) 5 1868-6868,11/11/1998;, Alfonse Elrick,(88) 5 5555-5555,12/12/8885;, Ardente,(12) 4 5555-5555,12/12/1998;, Barbicue,(75) 8 8888-5665,15/15/1181;, Benjamin Aboth,(75) 8 5454-8866,15/84/5956;, Bernstein,(12) 1 2121-2121,12/12/1998;, Cincoberto,(15) 1 5151-5151,12/12/1995;, Doisberto,(22) 2 2222-2222,11/11/1111;, Enter,(12) 1 2123-2323,12/13/1998;, Evernote,(91) 9 8535-0177,12/12/2020;, Notrew,(91) 9 8535-0177,12/12/1998;]
-
-				print('cadastro contains ${contatos.contains(contato)}');
-				if (!contatos.contains(contato))
+				if (!contatos.contains(contato+';'))
 					contatos.add(contato);
 					dupContatos.add(contato);
 			});
@@ -95,9 +89,8 @@ class _ListaState extends State<Lista>
 			{
 				setState(()
 				{
-					print('Alterando o ${contato.nome} para ${respCtt.nome}');
 					contatos.remove(contato);
-					if (!contatos.contains(respCtt))
+					if (!contatos.contains(respCtt+';'))
 						contatos.add(respCtt);
 						dupContatos.add(respCtt);
 				});
