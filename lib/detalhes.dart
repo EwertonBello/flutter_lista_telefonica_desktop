@@ -30,13 +30,11 @@ class _DetalhesState extends State<Detalhes>
     {
       formKey.currentState.save();
       _nome = '${_nome[0].toUpperCase()}${_nome.substring(1)}';
-      // print(_nome);
-      // print(_telefone);
-      // print(_data_nasc);
 
       ModTxt txt = new ModTxt();
-      // txt.deleteRegistro('${widget.nome},${widget.telefone},${widget.data_nasc}');
-      // txt.writeRegistro('$_nome,$_telefone,$_data_nasc');
+      String antigo = '${widget.nome},${widget.telefone},${widget.data_nasc}';
+      String novo = '$_nome,$_telefone,$_data_nasc';
+      txt.updateRegistro(antigo, novo);
       Navigator.of(context).pop(Contato(nome:_nome,telefone:_telefone,data_nasc:_data_nasc));
     }
   }
@@ -146,29 +144,3 @@ class _DetalhesState extends State<Detalhes>
       );
   }
 }
-
-// import 'package:flutter/material.dart';
-// import './models/contato.dart';
-//
-// class Detalhes extends StatelessWidget
-// {
-//
-//   String nome;
-//   String telefone;
-//   String data_nasc;
-//
-//   Detalhes(this.nome,this.telefone,this.data_nasc);
-//
-//   @override
-//   Widget build(BuildContext context)
-//   {
-//     return new Scaffold(
-//         appBar: new AppBar(
-//           title: new Text(this.nome),
-//         ),
-//         body: new Center(
-//             child: new Text('Detalhes Aqui')
-//         )
-//     );
-//   }
-// }

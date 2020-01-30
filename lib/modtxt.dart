@@ -29,13 +29,13 @@ class ModTxt
   void writeRegistro(String t) async
   {
   	var registros = await registro;
-  	registros.add(t);
-    registros.sort();
-    String text = registros.join('\n');
-    // print(text);
     if (!registros.contains(t))
+    {
+      registros.add(t);
+      registros.sort();
+      String text = registros.join('\n');
       File('./teste.txt').writeAsString(text);
-
+    }
   }
 
   void deleteRegistro(String t) async
@@ -46,66 +46,17 @@ class ModTxt
   	File('./teste.txt').writeAsString(text);
   }
 
+  void updateRegistro(String antigo, String t) async
+  {
+    var registros = await registro;
+    if (!registros.contains(t))
+    {
+      registros.remove(antigo);
+      registros.add(t);
+      registros.sort();
+      String text = registros.join('\n');
+      File('./teste.txt').writeAsString(text);
+    }
+  }
+
 }
-
-// class ModTxt
-// {
-
-// 	String txt = 'ok';
-
-// 	void insertTXT()
-// 	{
-// 		String txt = 'readTXT()'; // Vai carregar os registros do txt
-// 		// new File('./teste.txt').writeAsString('$_nome,$_telefone,$_data_nasc;');
-
-// 		print('TXT aí: $txt');
-// 	}
-
-// 	String readTXT()
-// 	{
-
-// 		// new File('./teste.txt')
-// 		// 	.readAsString()
-// 		// 	.then((String contents) {
-// 		// 		txt = contents;
-// 		// 		return txt;
-// 		// 	});
-
-// 		// print(txt);
-
-// 		// final file = new File('teste.txt');
-// 		// Stream<List<int>> inputStream = file.openRead();
-
-// 		// inputStream
-// 		// .transform(utf8.decoder)       // Decode bytes to UTF-8.
-// 		// .transform(new LineSplitter()) // Convert stream to individual lines.
-// 		// .listen((String line) {        // Process results.
-// 		// 	print('$line: ${line.length} bytes');
-// 		// 	},
-// 		// 	onDone: () { print('File is now closed.'); },
-// 		// 	onError: (e) { print(e.toString()); });
-
-// 		final file = new File('teste.txt');
-// 		Stream<List<int>> inputStream = file.openRead();
-
-// 		inputStream
-// 		.transform(utf8.decoder)       // Decode bytes to UTF-8.
-// 		.transform(new LineSplitter()) // Convert stream to individual lines.
-// 		.forEach((item) => teste(item));
-
-//         // print(txt);
-
-// 		return this.txt;
-
-// 	}
-
-// 	void teste(String t)
-// 	{
-// 		print('pegou $t');
-// 		this.txt += t;
-// 	}
-
-// 	// Future<String> loadTxt(BuildContext context) async {
-// 	// 	return await DefaultAssetBundle.of(context).loadString('teste.txt');
-// 	// }
-// }

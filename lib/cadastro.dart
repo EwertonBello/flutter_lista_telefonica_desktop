@@ -27,7 +27,6 @@ class _CadastroState extends State<Cadastro>
       ModTxt txt = new ModTxt();
       txt.writeRegistro('$_nome,$_telefone,$_data_nasc');
       Navigator.of(context).pop(Contato(nome:_nome,telefone:_telefone,data_nasc:_data_nasc));
-
     }
   }
 
