@@ -4,12 +4,13 @@ import 'dart:async';
 
 class ModTxt
 {
+  String _txt_nome = './contatos.txt';
 
   Future<List<String>> get registro async
   {
     List<String> registros = [];
 
-  	final file = new File('teste.txt');
+  	final file = new File(_txt_nome);
   	Stream<List<int>> inputStream = file.openRead();
 
   	Stream<String> lines = inputStream
@@ -34,7 +35,7 @@ class ModTxt
       registros.add(t);
       registros.sort();
       String text = registros.join('\n');
-      File('./teste.txt').writeAsString(text);
+      File(_txt_nome).writeAsString(text);
     }
   }
 
@@ -43,7 +44,7 @@ class ModTxt
   	var registros = await registro;
   	registros.remove(t);
     String text = registros.join('\n');
-  	File('./teste.txt').writeAsString(text);
+  	File(_txt_nome).writeAsString(text);
   }
 
   void updateRegistro(String antigo, String t) async
@@ -55,7 +56,7 @@ class ModTxt
       registros.add(t);
       registros.sort();
       String text = registros.join('\n');
-      File('./teste.txt').writeAsString(text);
+      File(_txt_nome).writeAsString(text);
     }
   }
 

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_masked_text/flutter_masked_text.dart';
-import 'models/contato.dart';
-import 'modtxt.dart';
+import '../models/contato.dart';
+import '../utils/modtxt.dart';
 
 
 class Cadastro extends StatefulWidget

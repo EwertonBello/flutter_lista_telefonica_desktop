@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:dynamic_theme/dynamic_theme.dart';
-import './home.dart';
-import './lista.dart';
+import './pages/home.dart';
 
-class Main extends StatelessWidget 
+class Main extends StatelessWidget
 {
   @override
-  Widget build(BuildContext context) 
+  Widget build(BuildContext context)
   {
     return new DynamicTheme(
       defaultBrightness: Brightness.light,
@@ -14,14 +13,13 @@ class Main extends StatelessWidget
         primarySwatch: Colors.green,
         brightness: brightness,
       ),
-      themedWidgetBuilder: (context, theme) 
+      themedWidgetBuilder: (context, theme)
       {
         return new MaterialApp(
           debugShowCheckedModeBanner: false,
           title: 'Lista Telefônica',
           theme: theme,
           home: new Home(),
-          // home: new Lista(),
         );
       }
     );

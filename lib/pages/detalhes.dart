@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_masked_text/flutter_masked_text.dart';
-import 'models/contato.dart';
-import 'modtxt.dart';
-
+import '../models/contato.dart';
+import '../utils/modtxt.dart';
 
 class Detalhes extends StatefulWidget
 {
@@ -122,7 +121,12 @@ class _DetalhesState extends State<Detalhes>
                     color: Colors.green,
                     textColor: Colors.white,
                     onPressed: _alterar,
-                    child: Text('Alterar'),
+                    child: Row(
+                      children: <Widget>[
+                        Icon(Icons.edit),
+                        Text('Alterar')
+                      ],
+                    ),
                     ),
                   ),
                 Padding(
@@ -131,7 +135,12 @@ class _DetalhesState extends State<Detalhes>
                     color: Colors.red,
                     textColor: Colors.white,
                     onPressed: _excluir,
-                    child: Text('Excluir'),
+                    child: Row(
+                      children: <Widget>[
+                        Icon(Icons.delete),
+                        Text('Excluir')
+                      ],
+                    ),
                     ),
                   )
                 ],

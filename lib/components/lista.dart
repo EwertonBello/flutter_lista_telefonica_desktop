@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'models/contato.dart';
-import 'detalhes.dart';
-import 'cadastro.dart';
-import 'modtxt.dart';
+import '../models/contato.dart';
+import '../pages/detalhes.dart';
+import '../pages/cadastro.dart';
+import '../utils/modtxt.dart';
 
 class Lista extends StatefulWidget
 {
@@ -63,11 +63,6 @@ class _ListaState extends State<Lista>
 		_getRegistros();
 	}
 
-	bool _contatoExiste(List<Contato> ctts, Contato ctt)
-	{
-		return true;
-	}
-
 	void _openCadastro() async
 	{ // Verifica se ele pode cadastrar mais de um
 		final contato = await Navigator.push(context, MaterialPageRoute(builder: (context) => Cadastro()));
@@ -95,6 +90,7 @@ class _ListaState extends State<Lista>
 				setState(()
 				{
 					contatos.remove(contato);
+					dupContatos.remove(contato);
 					if (!contatos.toString().contains(respCtt.toString()))
 						contatos.add(respCtt);
 						dupContatos.add(respCtt);
@@ -141,7 +137,6 @@ class _ListaState extends State<Lista>
 													trailing: Icon(Icons.keyboard_arrow_right),
 													onTap: ()
 													{
-														// Navigator.push(context, MaterialPageRoute(builder: (context) => Detalhes(contato.nome, contato.telefone, contato.data_nasc)));
 														_openDetalhes(contato);
 													}
 													),//ListTile
